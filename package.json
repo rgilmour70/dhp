@@ -1,5 +1,5 @@
 {
-  "name": "netlify-express",
+  "name": "dhp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
+    "mongoose": "^6.5.4",
     "netlify-lambda": "^2.0.15",
     "serverless-http": "^3.0.2"
   }
