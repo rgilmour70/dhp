@@ -36,7 +36,7 @@ router.get('/random', async (req, res) => {
 		} else {
 			result.forEach( r => {
 				i++;
-				coll.set( i, { 'verseNumber': r.verseNumber, 'text': r.text } );
+				coll.set( i, { 'verseNumber': parseInt(r.verseNumber), 'text': r.text } );
 			});
 		}
 	}).clone().catch(function(err) { console.log(err) })
