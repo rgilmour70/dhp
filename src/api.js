@@ -15,8 +15,8 @@ db.once('open', () => {
 });
 
 // Get all verses
-router.get('/', (req, res) => {
-	verses.find({}, (err, result) => {
+router.get('/', async (req, res) => {
+	await verses.find({}, (err, result) => {
 		if (err) {
 			res.json(err);
 		} else {
@@ -27,28 +27,7 @@ router.get('/', (req, res) => {
 
 // Get random verse
 router.get('/random', async (req, res) => {
-	// const n = await verses.countDocuments();
-	let coll = new Map();
-	let i = 0;
-	await verses.find({}, (err, result) => {
-		if (err) {
-			res.json(err);
-		} else {
-			result.forEach( r => {
-				i++;
-                const theText = r.text;
-                const theVerseNumber = parseInt(r.verseNumber);
-                if (theText && !isNaN(theVerseNumber)) {
-                    coll.set( i, { 'verseNumber': theVerseNumber, 'text', theText });
-                } else {
-                    res.json(err);
-                }
-			});
-		}
-	}).clone().catch(function(err) { console.log(err) })
-
-	const n = coll.size;
-	const selected = Math.floor(Math.random() * Math.floor(n) + 1);
+	const selected = Math.floor(Math.random() * Math.floor(176) + 1);
 	res.json([coll.get(selected)]);
 });
 
