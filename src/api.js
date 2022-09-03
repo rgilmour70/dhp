@@ -51,8 +51,8 @@ router.get('/random', async (req, res) => {
 });
 
 // Get specified verse
-router.get('/:id', (req, res) => {
-	verses.find({ verseNumber: parseInt(req.params.id) }, (err, result) => {
+router.get('/:id', async (req, res) => {
+	await verses.find({ verseNumber: parseInt(req.params.id) }, (err, result) => {
 		if (err) {
 			res.json(err);
 		} else {
