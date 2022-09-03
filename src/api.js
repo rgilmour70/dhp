@@ -34,7 +34,7 @@ router.get('/random', async (req, res) => {
         } else {
             res.json(result);
         }
-    })
+    }).clone().catch(function(err){ console.log(err)});
 });
 
 // Get specified verse
@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 		} else {
 			res.json(result);
 		}
-	});
+	}).clone().catch(function(err){ console.log(err)});
 });
 
 const PORT = process.env.PORT || 3000
