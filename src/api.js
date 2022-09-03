@@ -40,6 +40,8 @@ router.get('/random', async (req, res) => {
                 const theVerseNumber = parseInt(r.verseNumber);
                 if (theText && !isNaN(theVerseNumber)) {
                     coll.set( i, { 'verseNumber': theVerseNumber, 'text', theText });
+                } else {
+                    res.json(err);
                 }
 			});
 		}
