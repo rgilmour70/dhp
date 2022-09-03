@@ -28,7 +28,13 @@ router.get('/', async (req, res) => {
 // Get random verse
 router.get('/random', async (req, res) => {
 	const selected = Math.floor(Math.random() * Math.floor(176) + 1);
-	res.json([coll.get(selected)]);
+    await verses.find({ verseNumber: selected }, (err, result) => {
+        if (err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    })
 });
 
 // Get specified verse
